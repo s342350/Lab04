@@ -70,10 +70,17 @@ class Crociera:
 
     def cabine_ordinate_per_prezzo(self):
         """Restituisce la lista ordinata delle cabine in base al prezzo"""
+        return sorted(self.cabine, key=lambda c: c.prezzo)
         # TODO
 
 
     def elenca_passeggeri(self):
         """Stampa l'elenco dei passeggeri mostrando, per ognuno, la cabina a cui è associato, quando applicabile """
+        for p in self.passeggeri:
+            if p.cabina is not None:
+                cabina_info = f"Cabina: {p.cabina.codice}"
+            else:
+                cabina_info = "Nessuna cabina assegnata"
+            print(f"{p.codice} - {p.nome} {p.cognome} - {cabina_info}")
         # TODO
 
