@@ -66,6 +66,40 @@ class Crociera:
 
     def assegna_passeggero_a_cabina(self, codice_cabina, codice_passeggero):
         """Associa una cabina a un passeggero"""
+        cabina = None
+        for c in self.cabine:
+            if c.codice == codice_cabina:
+                cabina = c
+                break
+
+        # Cerca il passeggero con il codice indicato
+        passeggero = None
+        for p in self.passeggeri:
+            if p.codice == codice_passeggero:
+                passeggero = p
+                break
+
+        # Verifica che entrambi siano stati trovati
+        if cabina is None:
+            print(f"Errore: la cabina con codice {codice_cabina} non è stata trovata.")
+            return
+
+        if passeggero is None:
+            print(f"Errore: il passeggero con codice {codice_passeggero} non è stato trovato.")
+            return
+
+        # Verifica se ci sono letti disponibili nella cabina
+        numero_occupanti = len(cabina.passeggeri)
+        capacita_massima = cabina.n_letti
+
+        if numero_occupanti < capacita_massima:
+            # Assegna il passeggero alla cabina
+            cabina.passeggeri.append(passeggero)
+            passeggero.cabina = cabina
+            print(
+                f"Il passeggero {passeggero.nome} {passeggero.cognome} è stato assegnato alla cabina {cabina.codice}.")
+        else:
+            print(f"La cabina {cabina.codice} è piena. Capacità massima: {capacita_massima} letti.")
         # TODO
 
     def cabine_ordinate_per_prezzo(self):
