@@ -13,7 +13,7 @@ class Crociera:
         return self.nome
     @nome.setter
     def nome(self, nuovo_nome):
-        self.nuovo_nome=nuovo_nome
+        self._nome=nuovo_nome
 
     """Aggiungere setter e getter se necessari"""
     # TODO

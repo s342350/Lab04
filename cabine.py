@@ -4,6 +4,7 @@ class Cabine:
         self.n_letti=n_letti
         self.ponte=ponte
         self.prezzo=prezzo
+        self.passeggeri=[]
 
     def __repr__(self):
         return f"{self.codice}, {self.n_letti} letti, ponte {self.ponte}, {self.prezzo} euro"
